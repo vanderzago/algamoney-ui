@@ -28,3 +28,28 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## 18.11. Tratando rota não encontrada
 ng g c core/pagina-nao-encontrada --inline-style --inline-template --flat --spec=false
+
+## 19.3. Desafio: modulo de segurança e prototipo de tela de login
+### Criando o módulo segurança
+ng g module seguranca
+
+### Criando o componente login-form em segurança
+ng g c seguranca/login-form --spec=false
+
+## 19.4 Implementando o serviço de autenticação com OAuth 2
+### Criando o serviço de segurança oauth
+ng g s seguranca/auth --spec=false
+
+## 19.5. Decodificando o JWT e armazenando no Local Storage
+### Instalando o angular jwt
+npm install angular2-jwt --save
+
+## 19.13. Protegendo rotas com guarda de rotas (CanActivate)
+### Criando o componente nao-autorizado
+ng g c core/nao-autorizado --spec=false
+### Criando uma guarda de rota 
+ng g g seguranca/auth
+
+## 19.16. Implementando o logout
+### Criando o serviço logout
+ng g s seguranca/logout --spec=false
