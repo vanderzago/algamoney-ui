@@ -53,3 +53,15 @@ ng g g seguranca/auth
 ## 19.16. Implementando o logout
 ### Criando o serviço logout
 ng g s seguranca/logout --spec=false
+
+## 20.2. Fazendo build para o ambiente de produção
+ng build --prod
+
+## 20.3. Respondendo requisições com Node.js e Express
+node server.js
+
+## 20.4. Fazendo deploy em produção no Heroku
+heroku apps:create algamoney-ui
+git add .
+git commit -m "Deploy"
+git push heroku master
