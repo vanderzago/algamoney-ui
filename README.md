@@ -26,6 +26,52 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## 8.6. Instalando o Node.js e NPM
+* Node.js servidor q sustenta uma aplicação javascript
+* NPM aplicação q instala as bibliotecas javascript
+node -v
+npm -v
+
+## 8.7. Instalando e criando um projeto com Angular CLI
+* Angular CLI é uma ferramenta para criar aplicações angular e ajudar na execução de tarefas repetitivas
+* Comandos:
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli
+ng -v (versao)
+ng new <nome_projeto>
+cd <nome_projeto>
+ng serve (subir o servidor http://localhost:4200) 
+ng serve --port <porta>
+
+## 8.8. Abrindo o projeto no VS Code
+* package.json
+-> possui o nome do projeto, as dependencias (dependencies executa no servidor de produção e devdependencies apenas local, no ambiente do desenvolvedor)
+* node_modules
+-> diretório onde ficam os arquivos das dependencias
+* src
+-> diretorio onde ficam os codigos da aplicação
+
+## 8.9. Abrindo e executando um exemplo do curso
+* Ao baixar o codigo do git, o diretório node_modules precisa ser criado, uma vez q ele não é enviado ao repositório remoto (está presente no .gitignore):
+npm install
+* Ao digitar esse comando, ele lerá as dependencias do arquivo package.json e baixará as dependencias necessarias para a aplicação subir.
+
+## 9.1. Bootstrapping e AppModule
+* Componente-> parte do código onde especifica os templates html e css e realiza as interpolações com a classe
+* Molulos -> Agrupamento de funcionalidades e importação/exportação de funcionalidades dependentes, declaração de quais componentes fazem parte do módulo, qual o componente principal, provedores de serviços
+- main.ts possui o modulo principal que sera o iniciador da aplicação
+
+## 9.3. Criando um componente
+ng g c <nome_componente>
+
+## 9.4. Instalando a biblioteca CSS do Bootstrap
+* npm install bootstrap@next --save
+* incluir no arquivo angular-cli.json o nome do css do bootstrap e o caminho relativo dele na propriedade styles
+
+## 9.5. Introdução a data binding
+Formas de vincular componente ao template e vice-versa
+
 ## 18.11. Tratando rota não encontrada
 ng g c core/pagina-nao-encontrada --inline-style --inline-template --flat --spec=false
 
