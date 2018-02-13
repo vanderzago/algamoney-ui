@@ -79,6 +79,63 @@ ng g c core/pagina-nao-encontrada --inline-style --inline-template --flat --spec
 ### Criando o módulo segurança
 ng g module seguranca
 
+## 9.11. Introdução às diretivas
+* Diretivas são instruções passadas para os templates de html
+
+- Componentes (informa o local onde o componente será inserido): <lista-pessoas></lista-pessoas>
+- Estrutural (altera a estrutura do elemento): <h2 *ngIf="logado">Olá {{nomeUsuario}}</h2>
+- Atributos (altera o comportamento e aparencia do elemento): <h2 [style.color]="'red'">Olá {{nomeUsuario}}</h2> 
+
+## 9.13. Iterando com a diretiva ngFor
+https://randomuser.me -> site com imagens aleatorias de usuários
+
+## 9.14. Binding de propriedades customizadas com @Input
+* Uma propriedade de dentro de um componente pode ser acessado fora desse componente se atribuir ao decorador @input() -> entrada de dados num componente externo
+* Precisa ser importado o @angular/core
+
+## 9.15. Binding de eventos customizados com @Output e EventEmitter
+* EventEmitter (emissor de eventos) -> deve ser importado de @algular/core
+* @Output saida de dados para um componente externo
+* A combinação desses comandos implementa a comunicação entre dois componentes através de um evento que será acionado, por exemplo, após o clique de um botão
+* $event é uma variavel que recebe os valores enviados ao ser disparado um evento
+
+## 10.1. Instalando plugins úteis no Visual Studio Code
+* tslint -> procura erros no codigo, más práticas de programação
+- node_modules/tslint/bin/tslint --project tslint.json
+- ou extensão tslint
+* editorconfig -> padroniza o estilo de programação dos desenvolvedores (editorconfig.org)
+* HTML Snippet  (facilita a criação de tags com fechamento e espaçamento automatico)
+* Auto import -> ajuda na importação automatica para funcionamento do metodo utilizado no codigo
+
+## 10.2. Escolhendo uma biblioteca de componentes
+https://material.angular.io
+https://angular2-materialize.surge.sh
+https://ng-bootstrap.github.io
+https://valor-software.com/ngx-bootstrap
+https://www.primefaces.org/primeng
+
+## 10.3. Criando o projeto do curso e instalando o PrimeNG
+- npm install primeng --save (o --save salva a dependencia no package.json)
+- npm install font-awesome --save
+- Inserir as linhas abaixo no angular-cli.json na propriedade styles:
+"../node_modules/font-awesome/css/font-awesome.min.css",
+"../node_modules/primeng/resources/primeng.min.css",
+"../node_modules/primeng/resources/themes/omega/theme.css",
+
+* Para que seja possivel usar os componentes do primeng, eles precisam ser importados no codigo dos módulos do angular:
+- import {ButtonModule} from 'primeng/primeng';
+@NgModule({
+  imports: [
+    ButtonModule,
+  ]
+})
+
+## 10.4. Adicionando o formulário de pesquisa de lançamentos
+Utilização de media queries no css (@media) para que o tamanho da tela obedeça o tipo de media q está sendo utilizado para visualizar a pagina html
+
+## 10.6. Customizando colunas com ng-template
+* Utiliza-se o ng-template para customizar colunas do primeng
+* pTemplate informa qual dom da coluna será impactado com a customização (header, body, etc)
 ### Criando o componente login-form em segurança
 ng g c seguranca/login-form --spec=false
 
