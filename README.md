@@ -136,6 +136,102 @@ Utilização de media queries no css (@media) para que o tamanho da tela obedeç
 ## 10.6. Customizando colunas com ng-template
 * Utiliza-se o ng-template para customizar colunas do primeng
 * pTemplate informa qual dom da coluna será impactado com a customização (header, body, etc)
+
+## 10.7. Fazendo paginação de dados
+* adicionar a propriedade [paginator]=true e [rows]=n, onde n é a quantidade de linhas em cada página, na diretiva p-dataTable do primeng
+
+## 10.8. Adicionando tooltip
+* Tooltip - informação adicional qdo se passa o mouse sobre o objeto que queira dar mais detalhe
+* Propriedade pTooltip do primeng -> módulo ToolTipModule
+* Aplicado para qdo passar o mouse das figuras deletar e editar,mostrar essas mesmas mensagens
+
+## 10.9. Colocando a tabela de dados responsiva
+* PrimeNg utiliza regra css para deixar a tabela responsiva, porem de forma transparente
+* Adicionar a propriedade [responsive]=true
+
+## 10.10. Criando o componente de pesquisa de lançamentos
+ng g c lancamentos-pesquisa --spec=false
+
+## 10.11. Criando o componente de barra de navegação
+ng g c navbar --spec=false
+
+## 10.12. Adicionando menu intercambiável
+* Incluido (click)="exibindoMenu = !exibindoMenu" no marcador a do link das 3 barras do navbar e a propriedade [hidden]="!exibindoMenu" no marcador ul que possui as caracteristicas do menu lateral
+* https://www.primefaces.org/avalon-ng/#/data
+* código para ocultar o menu no caso do usuário clicar em qualquer lugar da tela:
+
+constructor(private elementRef: ElementRef) {
+  }
+
+  ...
+
+  @HostListener('document:click', ['$event'])
+  public aoClicar(event) {
+    const elementoClicado = event.target;
+    const estaDentro = this.elementoClicadoEstaDentroDoMenu(elementoClicado, this.elementRef);
+
+    if (!estaDentro) {
+      // se chegar aqui é porque o clique foi fora do menu.
+    }
+  }
+
+## 11.1. Criando diretivas customizadas
+ng g d campo-colorido --spec=false
+* Cria-se diretivas customizadas qdo queremos modificar um comportamento ou aparencia de um elemento, mas para isso eh necessário implementação de uma lógica de programação qualquer, alguma regra de negocio que precisa ser satisfeita
+* ElementRef dá acesso ao elemento hospedeiro da DOM (ao se aplicar a diretiva num elemento input, o input é o elemento hospedeiro)
+* Renderer é uma abstração para manipular renderizações - utiliza o elementRef
+
+## 11.2. Respondendo a eventos do hospedeiro com @HostListener
+* Incluir o decorator @HostListener('focus') antes do método que precisa realizar alguma lógica depois que o evento informado logo após o decorator ('focus') precisa executar
+* Evento Blur é qdo o hospedeiro perde o foco
+
+## 11.3. Vinculando propriedades do hospedeiro com @HostBinding
+@HostBinding('style.backgroundColor') corDeFundo: string -> no elemento que possuir a diretiva customizada terá a cor alterada conforme metodo implementado q define o valor da variavel corDeFundo
+
+## 11.4. Usando property binding em diretivas customizadas
+* Utiliza-se o @Input antes de uma variavel que tera seu valor definido na propriedade do elemento no qual a diretiva está trabalhando: <input campoColorido [cor]="'yellow'">
+
+## 11.5. Exportando a API da diretiva para o template
+* Utiliza-se ExportAs para que outros elementos do template possam acessar a diretiva customizada. 
+* O elemento que sofrerá os efeitos da diretiva precisa especificar o nome que será acessado por outro elemento, por exemplo o #campo=campoColorido (Nome q foi definido no ExportAs)
+
+## 11.6. Conhecendo e usando pipes
+* Recebem uma entrada e realiza uma tratativa desejada na saida, sem alterar o valor da entrada
+* Caracter |
+* angular.io/api -> pesquise por pipe para ver o q a entrada pode ser transformada
+
+## 12.2. Template-driven Forms: Criando um formulário
+* Para o angular gerenciar um formulario é preciso:
+- Importar o FormModules no arquivo de modulo
+- Adicionar variavel de referencia #formulario="ngForm" para que o angular consiga pegar as propriedades do formulario através de um objeto javascript
+- diretiva ngNoForm  no elemento form, o angular nao gerencia esse formulario
+
+## 12.3. Registrando os controles do formulário
+* Os elementos precisam ser registrados no formulario através da diretiva ngModel para que o objeto javascript gerado pelo angular consiga ter acesso a eles
+* Todo ngModel precisa ter uma propriedade name especificada no elemento
+
+## 12.7. Adicionando validação em formulários
+* a propriedade valid do objeto javascript avalia se todos os elementos required estão preenchidos, se minlength e maxlenght está sendo obedecido, etc
+
+## 12.8. Exibindo erro de validação do formulário
+autocomplete=off -> do proprio html
+- Adicionar variavel de referencia #elemento="ngModel" para que o angular consiga pegar as propriedades do elemento através de um objeto javascript
+- o elemento do angular hasError('required') valida se o campo foi preenchido e o hasError('minlength') avalia se o comprimento minimo foi atingido
+- a propriedade invalid avalia se todas as condições foram satisfeitas
+
+## 12.10. Rastreando o estado em controles do formulário
+* Angular gerencia o estado dos elementos do formulario para tomar decisão se uma mensagem de validação é exibida ou não:
+- Touched -> foi tocado pelo usuario
+- Pristine -> valor original não foi tocado pelo usuario
+- Dirty -> o valor original ja foi tocado
+* Tanto para ngForm e para ngModel
+
+## 12.13. Limpando formulários (reset)
+* Limpar o estado do formulario: o ngForm possui um metodo reset()
+* Passa-se como parametro do reset um json com alguns valores padrão para o formulario iniciar com esses valores
+
+## 12.9. Exibindo erro de validação de controles do formulário
+
 ### Criando o componente login-form em segurança
 ng g c seguranca/login-form --spec=false
 
