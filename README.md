@@ -59,7 +59,7 @@ npm install
 
 ## 9.1. Bootstrapping e AppModule
 * Componente-> parte do código onde especifica os templates html e css e realiza as interpolações com a classe
-* Molulos -> Agrupamento de funcionalidades e importação/exportação de funcionalidades dependentes, declaração de quais componentes fazem parte do módulo, qual o componente principal, provedores de serviços
+* Molulos -> Agrupamento de funcionalidades e importação/exportação de funcionalidades dependentes, declaração de quais componentes fazem parte do módulo, qual o componente principal [bootstrap], provedores de serviços
 - main.ts possui o modulo principal que sera o iniciador da aplicação
 
 ## 9.3. Criando um componente
@@ -230,7 +230,109 @@ autocomplete=off -> do proprio html
 * Limpar o estado do formulario: o ngForm possui um metodo reset()
 * Passa-se como parametro do reset um json com alguns valores padrão para o formulario iniciar com esses valores
 
-## 12.9. Exibindo erro de validação de controles do formulário
+## 13.1. Criando o protótipo do formulário de cadastro de lançamentos
+* ng g c lancamento-cadastro --spec=false
+* InputTextareaModule deve ser inserido no arquivo de modulo para usar a diretiva inputTextarea do primeng no elemento textarea do html
+* ui-g, ui-g-12, ui-md-3 e ui-g-6 utilizados no projeto são grids do primeng
+www.primefaces.org/primeng/#/grid
+
+## 13.2. Adicionando seletor de data (componente Calendar)
+* componente calendar do primeng
+* Importar o CalendarModule e BrowserAnimationModule
+* Propriedade dateFormat define o formato da data
+* colocar o idioma do calendário para português inserindo o código abaixo no arquivo lancamento-cadastro.component.ts:
+  pt_BR: any;
+
+  ngOnInit() {
+      this.pt_BR = {
+        firstDayOfWeek: 0,
+        dayNames: [ "Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado" ],
+        dayNamesShort: [ "dom","seg","ter","qua","qui","sex","sáb" ],
+        dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
+        monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+        monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez" ]
+      };
+Uma abordagem melhor seria criar uma diretiva customizada que seria inserida como propriedade do p-calendar
+
+## 13.3. Adicionando botão de seleção
+* SelectButtonModule
+
+## 13.4. Adicionando caixa de seleção (componente Dropdown)
+* DropDownModule
+* Caso queira modificar um estilo do primeng, clique em inspect do navegador, descubra a classe css do elemento que vc quer mudar e insira-o no arquivo styles.css - se for uma mudança global - ou no css do componente se for uma mudança bem especifica para o componente
+
+## 13.5. Adicionando máscara de dinheiro com ng2-mask-money
+npm install ng2-currency-mask --save
+CurrencyMaskModule
+diretiva currencyMask
+Formatação: [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+ngModel e name também são obrigatórios serem informados
+
+## 13.7. Adicionando campo com máscara (componente InputMask)
+InputMaskModule
+diretiva p-inputMask
+propriedade mask
+
+## 13.8. Validando controles de formulário com PrimeNG
+* Debug de erros de validação: {{ descricao.errors | json }} no qual descricao é uma variavel de referencia que recebe ngModel
+
+## 13.9. Criando componente de mensagem de erro de validação
+ng g c message --spec=false --inline-template --inline-style (não cria um arquivo html e css a parte)
+Utilização do operador ? qdo o objeto está nulo não faz nenhuma ação para não dar erro: descricao.errors?.minlength?.requiredLenght
+
+## 14.1. Introdução aos módulos
+Componentes, diretivas, pipes e outros pertencentes a um módulo só conseguem ser importados em outros módulos se o modulo que eles pertencem faça a exportação deles
+
+## 14.2. Criando um módulo e exportando um componente
+ng g m botoes
+ng g c botoes/botao-grande --spec=false
+
+## 14.3. Reexportando um módulo
+* Quando um modulo A utiliza o componente de um módulo B, ele também pode exportar esse módulo B para um módulo C que chama um componente tanto do módulo A quanto do módulo B
+* em exports do módulo A, informar o modulo B que será reexportado
+
+## 14.5. O que são Feature Modules?
+* Módulos de funcionalidades que agrupam os componentes afins
+
+## 14.8. O que são Shared Modules?
+São modulos que tem funcionalidades que podem ser compartilhadas entre outros módulos
+
+## 14.10. O que é Core Module?
+São os módulos utilizados somente pelo módulo raiz da aplicação, no caso, appModule, para que ele fique o mais enxuto possível.
+
+## 15.1. Introdução aos serviços
+Serviços são funcionalidades comuns que precisam ser fornecidas para um componente ou módulo
+
+## 15.2. Implementando um serviço
+JSONStringify -> transforma um objeto javascript em string
+
+## 15.3. O que é injeção de dependências?
+Injeções de dependencias são inseridas nos providers dos modulos
+
+## 15.4. Configurando o injetor com provider por classe
+Uma subclasse de uma classe provider pode ser referenciada dentro de providers : [provide: NomedoServiço, useClass: NomedaClasse ou SubClasse]
+
+## 15.5. Configurando o injetor com provider por fábrica
+providers : [provide: NomedoServiço, useFactory: NomedaFabrica]
+Neste caso o metodo NomedaFabrica é implementado retornando uma classe que recebe parametro no construtor
+
+## 15.6. Configurando o injetor com provider por valor e o decorator @Inject
+* No provider do modulo:
+ providers: [
+    LogService,
+    { provide: 'LogPrefixo', useValue: 'LOG2' }
+  ],
+* Na classe do serviço:
+constructor(
+    @Inject('LogPrefixo') private prefixo: string
+  ) { }
+
+## 15.7. Injetando serviços dentro de serviços e o decorador @Injectable
+* Inserir o decorador @Injectable() antes da classe que injetará um serviço
+* Por convenção o decorator deve ser incluido antes toda classe que implementa serviço
+
+## 15.8. Como funciona o Injetor Hierárquico
+Ver conceito na aula!
 
 ### Criando o componente login-form em segurança
 ng g c seguranca/login-form --spec=false
