@@ -334,6 +334,63 @@ constructor(
 ## 15.8. Como funciona o Injetor Hierárquico
 Ver conceito na aula!
 
+## 16.2. Instalando e testando o json-server
+* Realiza mock de json
+* Cria um diretorio data e um arquivo db.json onde os dados ficarão armazenados
+npm install -g json-server
+json-server --watch data/db.json
+
+## 16.3. Fazendo requisição com GET e recebendo o retorno
+ng g s cidade --spec=false
+Importar o modulo HttpModule
+Importar rxjs/add/operator/toPromise na classe de serviço
+
+## 17.1. Revisando e iniciando o back-end do projeto do curso
+www.base64encode.org -> codifica texto na base 64
+
+## 17.2. Criando o serviço de consulta de lançamentos
+ng g s lancamentos/lancamento --spec=false
+java -jar algamoney-api-1.0.0-SNAPSHOT.jar algamoney.origin-permitida=http://localhost:4200
+Class Headers para incluir cabeçalho na chamada HTTP
+
+## 17.3. Adicionando filtro por descrição na pesquisa de lançamentos
+Class URLSearchParams para incluir parametros na chamada HTTP
+
+## 17.4. Adicionando filtro por datas na pesquisa de lançamentos
+npm install moment --save
+https://momentjs.com -> converter data em string
+import * as moment from 'moment';
+Propriedade emptyMessage do PrimeNg do p-dataTable define a mensagem que será exibida na tabela caso o retorno da consulta não traga conteúdo
+
+## 17.6. Configurando a paginação lazy do PrimeNG
+* Propriedade lazy do p-dataTable informa que cada pagina da tabela tera seu conteudo buscado por demanda
+* evento onLazyLoad é invocado toda vez que uma nova página é chamada
+
+## 17.8. Excluindo lançamentos e o decorador @ViewChild
+* Criada a variavel de referencia #tabela no p-dataTable de lancamento
+* O decorador @ViewChild('tabela') terá acesso a essa variavel de referencia
+* a propriedade this.grid.first recebeu valor 0 para que a paginação do p-dataTable volte a página 0 após a exclusão de um lançamento
+
+## 17.9. Adicionando mensagem de sucesso com Angular Toasty
+* https://github.com/akserg/ng2-toasty
+* npm install ng2-toasty --save
+* Importar o modulo ToastyModule.forRoot() -> use o forRoot somente se for importado no AppModule
+* Importar ToastyConfig no componente
+* Inserir em styles do agular-cli.json "../node_modules/ng2-toasty/style-bootstrap.css",
+* Inserir o componente <ng2-toasty></ng2-toasty> no template
+
+## 17.10. Adicionando diálogo de confirmação antes da exclusão
+* Importar ConfirmDialogModule do PrimeNg
+* Inserir ConfirmationService em providers do módulo
+* Inserir o componente <p-confirmDialog></p-confirmDialog> no template
+
+## 17.11. Alterando o locale da aplicação para pt-BR
+Inserir no providers do modulo { provide: LOCALE_ID, useValue: 'pt-BR' }
+
+## 17.12. Criando um serviço de tratamento de erros
+* ng g s core/error-handler --spec=false
+* Adicionar o provider ErrorHandlerService no core module
+
 ### Criando o componente login-form em segurança
 ng g c seguranca/login-form --spec=false
 
