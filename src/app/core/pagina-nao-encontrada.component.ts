@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="container">
       <h1 class="text-center">Página não encontrada</h1>
-    <div>
+    </div>
   `,
   styles: []
 })

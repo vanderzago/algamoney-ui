@@ -72,13 +72,6 @@ ng g c <nome_componente>
 ## 9.5. Introdução a data binding
 Formas de vincular componente ao template e vice-versa
 
-## 18.11. Tratando rota não encontrada
-ng g c core/pagina-nao-encontrada --inline-style --inline-template --flat --spec=false
-
-## 19.3. Desafio: modulo de segurança e prototipo de tela de login
-### Criando o módulo segurança
-ng g module seguranca
-
 ## 9.11. Introdução às diretivas
 * Diretivas são instruções passadas para os templates de html
 
@@ -391,6 +384,65 @@ Inserir no providers do modulo { provide: LOCALE_ID, useValue: 'pt-BR' }
 * ng g s core/error-handler --spec=false
 * Adicionar o provider ErrorHandlerService no core module
 
+## 18.2. Configurando rotas na aplicação
+* Importar Router e RouterModule.forRoot() no appmodule
+* Criar o array de rotas [{path:,component:}]
+* Diretiva <router-outlet></router-outlet> no arquivo de template
+
+## 18.3. Navegando com Router Link
+* Incluir a diretiva routerLink no marcador a do html
+* Importar o modulo RouterModule no modulo correspondente ao html
+
+## 18.4. Estilizando links da rota ativa
+* Criar um estilo com nome de classe ativo
+* Inserir a diretiva routerLinkActive e referenciar a classe ativo
+
+## 18.5. Recebendo parâmetros da rota
+* Inserir um token na url (lancamentos/:codigo) no array de rotas
+* Usar a variavel activatedRoute para receber o parametro da url
+
+## 18.6. Desafio: implementando os serviços de atualização e busca por código
+* Converter string em data
+moment(lancamento.dataPagamento,'YYYY-MM-DD').toDate();
+
+## 18.9. Implementando navegação imperativa
+* metodo navigate de routers
+* função setTimeout criado no metodo novo para resolver um problema de limpeza do formulario que não deixava o botão Receita selecionado por padrão
+
+## 18.10. Fazendo redirecionamento
+Incluir no array de rotas para http://localhost:4200 direcionar para pesquisa de lançamentos:
+{path:'',redirectTo:'Lancamentos',pathMatch:'full'}
+
+## 18.11. Tratando rota não encontrada
+* ng g c core/pagina-nao-encontrada --inline-style --inline-template --flat --spec=false (--flat é para nao criar um diretorio com o mesmo nome do componente)
+* {path:'**',redirectTo:'pagina-nao-encontrada'}
+
+## 18.12. Definindo o título da página dinamicamente
+* O angular não trabalha nos marcadores fora do <body>, como o <header>
+* Usar o serviço Title para alterar dinamicamente o titulo da pagina
+* Incluir title em providers 
+* Usar o setTitle no componente
+
+## 18.13. Refatorando as rotas para usar Routing Module
+* Criado arquivo app-routing.module.ts com a classe AppRoutingModule
+* Importar AppRoutingModule no app.module.ts
+
+## 18.14. Criando um Routing Module para o módulo de funcionalidade
+* Criado arquivo lancamento-routing.module.ts com a classe LancamentoRoutingModule
+* Importar LancamentoRoutingModule no lancamento.module.ts
+* Importar RouterModule.forChild(routes) no LancamentoRoutingModules
+
+## 19.1. Introdução à segurança do front-end
+Explicação do modelo tradicional (estado de sessão) e o modelo arquitetural rest (sem estado de sessão)
+
+## 19.2. Revisando a segurança da API com OAuth 2 e JWT
+java -jar algamoney-api-1.0.0-SNAPSHOT.jar algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
+
+## 19.3. Desafio: módulo de segurança e protótipo da tela de login
+* Criado metodo exibindoNavBar criado para exibir ou nao o nav-bar
+* Não exibirá se tiver no /login
+### Criando o modulo segurança
+ng g m seguranca --spec=false
 ### Criando o componente login-form em segurança
 ng g c seguranca/login-form --spec=false
 
@@ -399,8 +451,24 @@ ng g c seguranca/login-form --spec=false
 ng g s seguranca/auth --spec=false
 
 ## 19.5. Decodificando o JWT e armazenando no Local Storage
+* Importado o serviço JwtHelper em providers do core module para decodificar o token
+* Usada a propriedade LocalStorage e o metodo setItem para guardar o token no storage local do navegador
 ### Instalando o angular jwt
 npm install angular2-jwt --save
+
+## 19.7. Adicionando o Access Token nas chamadas HTTP
+* Em seguranca.module foi adicionado o provider AuthHTTP e uma função authHTTPServiceFactory que vai construir um authHttp
+* deps em providers vai passar os parametros injetados para a função authHttpServiceFactory
+* O AuthHttp já insere no header o authorization do token, portanto não precisa mais declarar a classe headers com o authorization
+* O AuthHTTP pega do local storage o valor do token que foi informado no setItem com nome token
+
+## 19.10. Obtendo um novo access token
+withCredentials: true resolve o problema de cross site na renovação do access token
+
+## 19.11. Interceptando chamadas HTTP para tratar a expiração do access token
+* jwtHelper.isTokenExpired(token) verifica se o token expirou
+* Criado o arquivo money-http que herda o authHttp
+* O metodo fazerRequisição implementa a verificação do token antes de realizar as chamadas get, put, etc
 
 ## 19.13. Protegendo rotas com guarda de rotas (CanActivate)
 ### Criando o componente nao-autorizado
