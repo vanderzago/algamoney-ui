@@ -467,26 +467,57 @@ withCredentials: true resolve o problema de cross site na renovação do access 
 
 ## 19.11. Interceptando chamadas HTTP para tratar a expiração do access token
 * jwtHelper.isTokenExpired(token) verifica se o token expirou
-* Criado o arquivo money-http que herda o authHttp
+* Criado o arquivo money-http que herda o authHttp e intercepta as chamadas http
 * O metodo fazerRequisição implementa a verificação do token antes de realizar as chamadas get, put, etc
 
 ## 19.13. Protegendo rotas com guarda de rotas (CanActivate)
+* Protege as rotas, direcionando o usuario para uma rota especifica qdo ele tenta acessar uma que não tem acesso
+* A propriedade CanActivate no array de rotas adiciona a guarda da rota
+* propriedade data possui um objeto com as roles que permitem o acesso a rota
+* Precisa fornecer a classe de guarda no provider do modulo de segurança
+
 ### Criando o componente nao-autorizado
 ng g c core/nao-autorizado --spec=false
 ### Criando uma guarda de rota 
 ng g g seguranca/auth
 
+## 19.14. E se o Refresh Token expirar?
+* Implementada a classe NotAuthenticatedError que será disparada caso o token nao esteja mais valido mesmo apos uma nova solicitação de novo acess token
+* Essa classe será capturada pelo ErrorHandler e direcionara para a tela de login
+
+## 19.15. Tratando acessos de usuários deslogados na AuthGuard
+Ao tentar obter o token no authguard e nao conseguir, fara o direcionamento para a tela de login
+
 ## 19.16. Implementando o logout
+* No serviço auth.service.ts foi criado um metodo com:
+localStorage.removeItem('token')
+jwtPayload = null
+* Inserido o LogoutService no modulo de segurança
+
 ### Criando o serviço logout
 ng g s seguranca/logout --spec=false
+
+## 20.1. Configurando a aplicação com environment do Angular CLI
+* environment.ts é o arquivo com as configurações pertinentes ao ambiente de desenvolvimento
+* environment-prod.ts é o arquivo com as configurações pertinentes ao ambiente de produção
+* importar o environment nos serviços q chamam a url da api
 
 ## 20.2. Fazendo build para o ambiente de produção
 ng build --prod
 
 ## 20.3. Respondendo requisições com Node.js e Express
+* Criado arquivo server.js na raiz do projeto somente para servir os arquivos da pasta dist
+* Importar o modulo javascript Express (framework web simples usado com node.js) e metodo express 
+
 node server.js
 
 ## 20.4. Fazendo deploy em produção no Heroku
+* process.env.PORT no server.js é provido pelo heroku
+* postinstall -> heroku apos resolver as dependencias, vai executar o q estiver em postinstall no package.json (ng build --prod)
+* start -> alterado o start do package.json para node server.js
+* Não instala os devdependencies, e como o build será realizado no heroku, devemos mover os devdependencies para dependencies
+* Em engines, especificou-se as versões usadas do node do npm
+
 heroku apps:create algamoney-ui
 git add .
 git commit -m "Deploy"
