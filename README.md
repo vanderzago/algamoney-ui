@@ -343,7 +343,7 @@ www.base64encode.org -> codifica texto na base 64
 
 ## 17.2. Criando o serviço de consulta de lançamentos
 ng g s lancamentos/lancamento --spec=false
-java -jar algamoney-api-0.0.1-SNAPSHOT.jar algamoney.origin-permitida=http://localhost:4200
+java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin-permitida=http://localhost:4200
 Class Headers para incluir cabeçalho na chamada HTTP
 
 ## 17.3. Adicionando filtro por descrição na pesquisa de lançamentos
@@ -436,7 +436,7 @@ Incluir no array de rotas para http://localhost:4200 direcionar para pesquisa de
 Explicação do modelo tradicional (estado de sessão) e o modelo arquitetural rest (sem estado de sessão)
 
 ## 19.2. Revisando a segurança da API com OAuth 2 e JWT
-java -jar algamoney-api-0.0.1-SNAPSHOT.jar algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
+java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
 
 ## 19.3. Desafio: módulo de segurança e protótipo da tela de login
 * Criado metodo exibindoNavBar criado para exibir ou nao o nav-bar
