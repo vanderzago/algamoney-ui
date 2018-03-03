@@ -297,7 +297,7 @@ São os módulos utilizados somente pelo módulo raiz da aplicação, no caso, a
 Serviços são funcionalidades comuns que precisam ser fornecidas para um componente ou módulo
 
 ## 15.2. Implementando um serviço
-JSONStringify -> transforma um objeto javascript em string
+console.log(JSON.stringify(nome_objeto)) -> transforma um objeto javascript em string
 
 ## 15.3. O que é injeção de dependências?
 Injeções de dependencias são inseridas nos providers dos modulos
