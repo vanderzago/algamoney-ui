@@ -518,7 +518,7 @@ node server.js
 * Não instala os devdependencies, e como o build será realizado no heroku, devemos mover os devdependencies para dependencies
 * Em engines, especificou-se as versões usadas do node do npm
 
-heroku apps:create algamoney-ui
+heroku apps:create algamoney-ui-vz
 git add .
 git commit -m "Deploy"
 git push heroku master
