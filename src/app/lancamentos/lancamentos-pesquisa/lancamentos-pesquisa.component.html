@@ -24,14 +24,14 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Pesquisar"></button>
+        <button pButton name="pesquisar" type="submit" label="Pesquisar"></button>
       </div>
 
     </form>
   </div>
 
   <div class="ui-g">
-    <div class="ui-g-12">
+    <div id="tabela_lancamentos" class="ui-g-12">
       <p-dataTable [value]="lancamentos" [responsive]="true"
           emptyMessage="Nenhum lançamento encontrado"
           [paginator]="true" [rows]="filtro.itensPorPagina"
@@ -70,7 +70,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
+      <a pButton name="novo_lancamento" label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
     </div>
 
   </div>
