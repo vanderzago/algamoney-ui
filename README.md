@@ -27,7 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## 8.6. Instalando o Node.js e NPM
-* Node.js servidor q sustenta uma aplicação javascript
+* Node.js servidor q sustenta uma aplicação javascript (versao 7.11)
 * NPM aplicação q instala as bibliotecas javascript
 node -v
 npm -v
@@ -37,12 +37,16 @@ npm -v
 * Comandos:
 npm uninstall -g @angular/cli
 npm cache clean
-npm install -g @angular/cli
+npm install -g @angular/cli@1.4.9
+npm install typescript@'>=2.1.0 <2.4.0'
 ng -v (versao)
 ng new <nome_projeto>
 cd <nome_projeto>
 ng serve (subir o servidor http://localhost:4200) 
 ng serve --port <porta>
+
+* Depois de baixar o codigo do versionador, precisa executar o seguinte comando:
+npm install
 
 ## 8.8. Abrindo o projeto no VS Code
 * package.json
