@@ -38,12 +38,13 @@ npm -v
 npm uninstall -g @angular/cli
 npm cache clean
 npm install -g @angular/cli@1.4.9
+* Acessar diretorio raiz do projeto
 npm install typescript@'>=2.1.0 <2.4.0'
 ng -v (versao)
 ng new <nome_projeto>
 cd <nome_projeto>
 ng serve (subir o servidor http://localhost:4200) 
-ng serve --port <porta>
+ng serve --port 8000 (subir o servidor http://localhost:8000) configurado no CORS da API
 
 * Depois de baixar o codigo do versionador, precisa executar o seguinte comando:
 npm install
@@ -507,7 +508,8 @@ ng g s seguranca/logout --spec=false
 * importar o environment nos serviços q chamam a url da api
 
 ## 20.2. Fazendo build para o ambiente de produção
-ng build --prod
+ng build --environment=prod (mesmo nome do arquivo environments)
+ng build --prod (metaflag q inclui --environment=prod e outras atividades, como otimizar o tamanho do diretorio dist e do código das dependendicas q realmente é necessário para o funcionamento)
 
 ## 20.3. Respondendo requisições com Node.js e Express
 * Criado arquivo server.js na raiz do projeto somente para servir os arquivos da pasta dist
