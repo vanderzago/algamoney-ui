@@ -122,11 +122,13 @@ https://www.primefaces.org/primeng
 
 * Para que seja possivel usar os componentes do primeng, eles precisam ser importados no codigo dos módulos do angular:
 - import {ButtonModule} from 'primeng/primeng';
+```
 @NgModule({
   imports: [
     ButtonModule,
   ]
 })
+```
 
 ## 10.4. Adicionando o formulário de pesquisa de lançamentos
 Utilização de media queries no css (@media) para que o tamanho da tela obedeça o tipo de media q está sendo utilizado para visualizar a pagina html
@@ -158,6 +160,7 @@ ng g c navbar --spec=false
 * https://www.primefaces.org/avalon-ng/#/data
 * código para ocultar o menu no caso do usuário clicar em qualquer lugar da tela:
 
+```
 constructor(private elementRef: ElementRef) {
   }
 
@@ -172,6 +175,7 @@ constructor(private elementRef: ElementRef) {
       // se chegar aqui é porque o clique foi fora do menu.
     }
   }
+```
 
 ## 11.1. Criando diretivas customizadas
 ng g d campo-colorido --spec=false
@@ -241,6 +245,7 @@ www.primefaces.org/primeng/#/grid
 * colocar o idioma do calendário para português inserindo o código abaixo no arquivo lancamento-cadastro.component.ts:
   pt_BR: any;
 
+```
   ngOnInit() {
       this.pt_BR = {
         firstDayOfWeek: 0,
@@ -250,6 +255,7 @@ www.primefaces.org/primeng/#/grid
         monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
         monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez" ]
       };
+```
 Uma abordagem melhor seria criar uma diretiva customizada que seria inserida como propriedade do p-calendar
 
 ## 13.3. Adicionando botão de seleção
@@ -316,6 +322,8 @@ Neste caso o metodo NomedaFabrica é implementado retornando uma classe que rece
 
 ## 15.6. Configurando o injetor com provider por valor e o decorator @Inject
 * No provider do modulo:
+
+```
  providers: [
     LogService,
     { provide: 'LogPrefixo', useValue: 'LOG2' }
@@ -324,6 +332,7 @@ Neste caso o metodo NomedaFabrica é implementado retornando uma classe que rece
 constructor(
     @Inject('LogPrefixo') private prefixo: string
   ) { }
+```
 
 ## 15.7. Injetando serviços dentro de serviços e o decorador @Injectable
 * Inserir o decorador @Injectable() antes da classe que injetará um serviço
@@ -524,7 +533,15 @@ node server.js
 * Não instala os devdependencies, e como o build será realizado no heroku, devemos mover os devdependencies para dependencies
 * Em engines, especificou-se as versões usadas do node do npm
 
+```
 heroku apps:create algamoney-ui-vz
 git add .
 git commit -m "Deploy"
 git push heroku master
+```
+
+## 21.1. Atualizando para o Angular 5
+* Site que auxilia a atualização do angular
+  * https://angular-update-guide.firebaseapp.com
+
+npm install -g @angular/cli@1.7.3
