@@ -545,3 +545,37 @@ git push heroku master
   * https://angular-update-guide.firebaseapp.com
 
 npm install -g @angular/cli@1.7.3
+
+* package.json
+  * Voltar as packages de desenvolvimento
+  * Atualizar as versões do pacote conforme nova versão do angular-cli
+  * "start": "node server.js" -> "start": "ng serve", para voltar a subida local
+  * Remover "postinstall": "ng build --prod" pois não fará build para prd
+
+```
+npm install
+ng start
+```
+
+## 21.3. Atualizando o PrimeNG
+
+* Ver versão mais recente:
+npm info primeng
+
+* Atualizar a versão no package.json
+npm install
+
+* Fazer as adequações dos nomes dos módulos
+
+## 21.6. Carregamento tardio de módulos (Lazy loading)
+
+* Evitar carregar módulos pesados ou pouco usados na inicialização da aplicação do navegador
+* Esses módulos serão carregados somente quando invocados
+* Usar loadChildren para os módulos que serão carregados tardiamente
+* Os módulos tardios não podem ser importados no app-modules.ts, senão serão carregados durante o primeiro acesso da aplicação
+
+## 21.7. Formulários reativos
+
+* Melhor controle do formulário para reação das ações do usuário
+* Retira alguns elementos de controle HTML do formulario, e passa a codificá-los no typescript
+  * Exemplo: maxlength, required, etc
