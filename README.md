@@ -579,3 +579,36 @@ npm install
 * Melhor controle do formulário para reação das ações do usuário
 * Retira alguns elementos de controle HTML do formulario, e passa a codificá-los no typescript
   * Exemplo: maxlength, required, etc
+
+## 23.1. Criando o módulo Dashboard
+```
+ng g m dashboard --routing
+ng g c dashboard/dashboard
+```
+## 23.2. Plotando gráficos com dados estáticos
+
+Baixando as libs do primeng q trabalha com graficos
+```
+npm install chart.js --save
+```
+
+* Inserir chart.js em scripts no angular-cli.json
+
+## 23.3. Criando o serviço da Dashboard
+
+```
+ng g s dashboard/dashboard --spec=false
+```
+
+## 23.7. Criando módulo de relatórios
+
+```
+ng g m relatorios --routing --spec=false
+ng g c relatorios/relatorio-lancamentos --spec=false
+```
+
+## 23.9. Exibindo o PDF para o usuário
+
+```
+ng g s relatorios/relatorios --spec=false
+```

@@ -15,9 +15,12 @@ import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { CategoriaService } from './../categorias/categoria.service';
+import { DashboardService } from './../dashboard/dashboard.service';
+import { RelatoriosService } from './../relatorios/relatorios.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+
 
 registerLocaleData(localePt);
 
@@ -44,6 +47,8 @@ registerLocaleData(localePt);
     LancamentoService,
     PessoaService,
     CategoriaService,
+    DashboardService,
+    RelatoriosService,
     ErrorHandlerService,
     AuthService,
 
