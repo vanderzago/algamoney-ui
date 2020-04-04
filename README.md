@@ -612,3 +612,23 @@ ng g c relatorios/relatorio-lancamentos --spec=false
 ```
 ng g s relatorios/relatorios --spec=false
 ```
+## 23.11 Exibindo Contatos de Pessoa
+
+PainelModule para criar o painel de contato na tela de Pessoas
+
+## 23.12 Criando o dialogo de contato
+
+DialogModule para criar o diálogo do contato (pequena tela/popup)
+
+## 23.19 Criando componente de contato
+ng g c pessoas/pessoa-cadastro-contato --spec=false
+No componente <app-pessoa-cadastro-contato> do html tem a passagem dos contatos da pessoa para o componente Contato criado
+
+## 23.20 Usando componente fileUpload
+FileUploadModule para usar o modulo de fazer o upload do arquivo
+auto=true -> usuario seleciona o arquivo e já faz o upload
+mode=basic -> seleciona apenas uma arquivo para upload
+accept=?? -> define os arquivos q podem ser enviados
+
+## 23.22 Utilizando componente ProgressSpinner
+ProgressSpinnerModule -> modulo do spinner de progresso
