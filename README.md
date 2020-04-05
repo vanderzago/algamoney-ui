@@ -632,3 +632,6 @@ accept=?? -> define os arquivos q podem ser enviados
 
 ## 23.22 Utilizando componente ProgressSpinner
 ProgressSpinnerModule -> modulo do spinner de progresso
+
+## 24.4. Preenchendo Dropdown de estados
+DropdownModule -> módulo de dropdown
